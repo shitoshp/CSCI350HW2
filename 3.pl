@@ -1,4 +1,8 @@
-list_min([Item1], Item1).
+list_min([Item1], Item1) :-
+    number(Item1).
+
+list_min([Item1], 99999) :-
+    \+ number(Item1).
 
 list_min([Item1|Rest], Item1) :-
     number(Item1),
@@ -6,6 +10,12 @@ list_min([Item1|Rest], Item1) :-
     Item1 =< Min_rest.
 
 list_min([Item1|Rest], Ans) :-
+    number(Item1),
     list_min(Rest, Ans),
     Item1 >= Ans.
+
+list_min([Item1|Rest], Ans) :-
+    \+ number(Item1),
+    list_min(Rest, Ans).
+
 
