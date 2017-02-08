@@ -18,7 +18,8 @@ list_min([Item1|Rest], Ans) :-
     \+ number(Item1),
     list_min(Rest, Ans).
 
-delete_min(X, [], []).
+delete_min(X, [], []) :-
+    number(X).
 
 delete_min(X, [Element|Tail], List) :-
     Element =< X,
