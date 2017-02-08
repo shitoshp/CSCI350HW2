@@ -1,3 +1,3 @@
-member(X, [X|_]).
-member(X, [_|Y]) :-
-    member(X,Y).
+common_unique_elements([], _, []).
+
+common_unique_elements(_, [], []).
