@@ -24,3 +24,7 @@ delete_min(X, [], []) :-
 delete_min(X, [Element|Tail], List) :-
     Element =< X,
     delete_min(X, Tail, List).
+
+delete_min(X, [Element|Tail], [Element|List]) :-
+    Element >= X,
+    delete_min(X, Tail ,List).
