@@ -22,15 +22,25 @@ delete_min(X, [], []) :-
     number(X).
 
 delete_min(X, [Element|Tail], List) :-
+    number(Element),
     Element =< X,
     delete_min(X, Tail, List).
 
 delete_min(X, [Element|Tail], [Element|List]) :-
+    number(Element),
     Element > X,
     delete_min(X, Tail ,List).
 
+delete_min(X, [Element|Tail], List) :-
+    \+ number(Element),
+    delete_min(X, Tail, List).
+
+
 min_above_min([], _, N) :-
     N is -1.
+
+min_above_min(L1, [], N) :-
+    list_min(L1, N).
 
 min_above_min(L1, L2, N) :-
     list_min(L2, L2_min),
